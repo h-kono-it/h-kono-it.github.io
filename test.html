@@ -1,0 +1,588 @@
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+  integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+  crossorigin="anonymous"
+></script>
+<label for="label1">基本情報</label>
+<input
+  type="checkbox"
+  id="label1"
+  onchange="toggleAcc(this)"
+  data-target="base-info"
+/>
+<div id="base-info" style="display: none">
+  <p>
+    <label for="name">名前：</label
+    ><input type="text" id="name" value="ひろ" />
+  </p>
+  <p>
+    <label for="age">年齢：</label><input type="text" id="age" value="ヒミツ" />
+  </p>
+  <p>
+    <label for="work">職業：</label
+    ><input type="text" id="work" value="プログラマ" />
+  </p>
+  <p>
+    <label for="live">住処：</label
+    ><input type="text" id="live" value="千葉" />
+  </p>
+  <p>
+    <label for="qualification1">スキル1：</label
+    ><input type="text" id="qualification1" value="DBスペシャリスト" />
+  </p>
+  <p>
+    <label for="qualification2">スキル2：</label
+    ><input type="text" id="qualification2" value="応用情報" />
+  </p>
+  <p>
+    <label for="qualification2">スキル3：</label
+    ><input type="text" id="qualification3" value="自動車免許" />
+  </p>
+  <p>
+    <label for="parsonality">性格</label
+    ><textarea id="parsonality" rows="2" cols="32" style="resize: none">
+コミュ障
+負けず嫌い</textarea
+    >
+  </p>
+  <p><label for="image">画像</label
+    ><input type="file" id="image"></p>
+</div>
+<label for="label2">レーダーチャート</label>
+<input
+  type="checkbox"
+  id="label2"
+  onchange="toggleAcc(this)"
+  data-target="radar-info"
+/>
+<div id="radar-info" style="display: none">
+  <p>
+    <label for="front">フロント：</label
+    ><input type="number" id="front" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="back">バック：</label
+    ><input type="number" id="back" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="infra">インフラ：</label
+    ><input type="number" id="infra" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="db">DB：</label
+    ><input type="number" id="db" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="security">セキュリティ：</label
+    ><input type="number" id="security" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="management">マネジメント：</label
+    ><input type="number" id="management" value="1" max="5" min="1" />
+  </p>
+  <p>
+    <label for="free_skill_name">フリー：</label
+    ><input type="text" id="free_skill_name" />：<input
+      type="number"
+      id="free_skill_value"
+      max="5"
+      min="1"
+    />
+  </p>
+</div>
+<label for="label3">言語</label>
+<input
+  type="checkbox"
+  id="label3"
+  onchange="toggleAcc(this)"
+  data-target="lang-info"
+/>
+<div id="lang-info" style="display: none">
+  <p>
+    <label for="">C：</label
+    ><input type="number" id="lang1" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">C++：</label
+    ><input type="number" id="lang2" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">C#：</label
+    ><input type="number" id="lang3" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">PHP：</label
+    ><input type="number" id="lang4" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Java：</label
+    ><input type="number" id="lang5" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Kotlin：</label
+    ><input type="number" id="lang6" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Ruby：</label
+    ><input type="number" id="lang7" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Python：</label
+    ><input type="number" id="lang8" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Swift：</label
+    ><input type="number" id="lang9" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Haskell：</label
+    ><input type="number" id="lang10" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Scala：</label
+    ><input type="number" id="lang11" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Erlang：</label
+    ><input type="number" id="lang12" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Go：</label
+    ><input type="number" id="lang13" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">JavaScript：</label
+    ><input type="number" id="lang14" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">HTML5+CSS3：</label
+    ><input type="number" id="lang15" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Sass：</label
+    ><input type="number" id="lang16" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">COBOL：</label
+    ><input type="number" id="lang17" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Rust：</label
+    ><input type="number" id="lang18" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Clojure：</label
+    ><input type="number" id="lang19" value="0" max="100" min="0" />
+  </p>
+</div>
+<label for="label4">フレームワーク</label>
+<input
+  type="checkbox"
+  id="label4"
+  onchange="toggleAcc(this)"
+  data-target="frame-info"
+/>
+<div id="frame-info" style="display: none">
+  <p>
+    <label for="">Spring：</label
+    ><input type="number" id="frame1" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Jakarta EE：</label
+    ><input type="number" id="frame2" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">CakePHP：</label
+    ><input type="number" id="frame3" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Symfony：</label
+    ><input type="number" id="frame4" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Laravel：</label
+    ><input type="number" id="frame5" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Ruby on Rails：</label
+    ><input type="number" id="frame6" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Django：</label
+    ><input type="number" id="frame7" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Play Framework：</label
+    ><input type="number" id="frame8" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">.NET Framework：</label
+    ><input type="number" id="frame9" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">React：</label
+    ><input type="number" id="frame10" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Vue.js：</label
+    ><input type="number" id="frame11" value="0" max="100" min="0" />
+  </p>
+</div>
+<label for="label5">インフラ</label>
+<input
+  type="checkbox"
+  id="label5"
+  onchange="toggleAcc(this)"
+  data-target="infra-info"
+/>
+<div id="infra-info" style="display: none">
+  <p>
+    <label for="">AWS：</label
+    ><input type="number" id="infra1" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">GCP：</label
+    ><input type="number" id="infra2" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">UNIX：</label
+    ><input type="number" id="infra3" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Windows Server：</label
+    ><input type="number" id="infra4" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Apache：</label
+    ><input type="number" id="infra5" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">Tomcat：</label
+    ><input type="number" id="infra6" value="0" max="100" min="0" />
+  </p>
+  <p>
+    <label for="">nginx：</label
+    ><input type="number" id="infra7" value="0" max="100" min="0" />
+  </p>
+</div>
+
+<label for="label6">その他</label>
+<input
+  type="checkbox"
+  id="label6"
+  onchange="toggleAcc(this)"
+  data-target="other-info"
+/>
+<div id="other-info" style="display: none">
+  <p>
+    <label for="past">略歴</label
+    ><textarea id="past" rows="4" cols="56" style="resize: none">
+SIerで5年間、金融系システムなどの基幹システムに携わる。
+主にJavaを使い、Webサービスを実装。
+自社サービスに関わりたいと思い転職して今に至る。</textarea
+    >
+  </p>
+  <p>
+    <label for="hobby">趣味</label
+    ><input type="text" id="hobby" value="TRPG, 一人カラオケ" />
+  </p>
+  <p>
+    <label for="sp_skill">特技</label
+    ><input type="text" id="sp_skill" value="縄跳び" />
+  </p></div>
+
+<button id="draw" onclick="draw()" style="display: none">描画</button>
+<button id="download" onclick="download()" style="display: none">
+  download
+</button>
+<canvas id="myChart" width="250" height="250" style="display: none"></canvas>
+
+<canvas id="canvas" width="900" height="2000" style="display: none"></canvas>
+<canvas id="image-canvas" width="200" height="200" style="display: none"></canvas>
+
+<script>
+  var file = document.getElementById('image');
+  var image_canvas = document.getElementById('image-canvas');
+  var canvasWidth = 200;
+  var canvasHeight = 200;
+  var uploadImgSrc;
+
+  // Canvasの準備
+  image_canvas.width = canvasWidth;
+  image_canvas.height = canvasHeight;
+  var image_ctx = image_canvas.getContext('2d');
+
+
+  const chara = new Image();
+  chara.src = "image0.png"; // 画像のURLを指定
+  let chara_width = 0;
+  let chara_height = 0;
+  chara.onload = function (event) {
+    chara_width = this.width;
+    chara_height = this.height;
+    document.getElementById("draw").style = "display: inline-block;";
+    document.getElementById("download").style = "display: inline-block;";
+  };
+
+  function loadLocalImage(e) {
+    // ファイル情報を取得
+    var fileData = e.target.files[0];
+
+    // 画像ファイル以外は処理を止める
+    if(!fileData.type.match('image.*')) {
+      alert('画像を選択してください');
+      return;
+    }
+
+    // FileReaderオブジェクトを使ってファイル読み込み
+    var reader = new FileReader();
+    // ファイル読み込みに成功したときの処理
+    reader.onload = function() {
+      // Canvas上に表示する
+      uploadImgSrc = reader.result;
+      canvasDraw();
+    }
+    // ファイル読み込みを実行
+    reader.readAsDataURL(fileData);
+  }
+
+  // ファイルが指定された時にloadLocalImage()を実行
+  file.addEventListener('change', loadLocalImage, false);
+
+  // Canvas上に画像を表示する
+  function canvasDraw() {
+    // canvas内の要素をクリアする
+    image_ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    // Canvas上に画像を表示
+    var img = new Image();
+    img.src = uploadImgSrc;
+    img.onload = function() {
+      image_ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
+    }
+  }
+
+  function toggleAcc(ele) {
+    target = ele.getAttribute("data-target");
+    document.getElementById(target).style = ele.checked
+      ? "display: block;"
+      : "display: none;";
+  }
+
+  function check() {
+    const messages = [];
+    checkRaderMax("front", "フロント", messages);
+    checkRaderMax("back", "バック", messages);
+    checkRaderMax("infra", "インフラ", messages);
+    checkRaderMax("db", "DB", messages);
+    checkRaderMax("security", "セキュリティ", messages);
+    checkRaderMax("management", "マネジメント", messages);
+    checkRaderMin("front", "フロント", messages);
+    checkRaderMin("back", "バック", messages);
+    checkRaderMin("infra", "インフラ", messages);
+    checkRaderMin("db", "DB", messages);
+    checkRaderMin("security", "セキュリティ", messages);
+    checkRaderMin("management", "マネジメント", messages);
+  }
+
+  function checkRaderMax(id, name, messages) {
+    if (document.getElementById(id).value > 5) {
+      messages.push(`${name}は5以下で入力してください`);
+    }
+  }
+  function checkRaderMin(id, name, messages) {
+    if (document.getElementById(id).value < 1) {
+      messages.push(`${name}は1以上で入力してください`);
+    }
+  }
+
+  function draw() {
+    const canvas = document.getElementById("canvas");
+    const ctx = document.getElementById("canvas").getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const dstWidth = chara_width * 0.3;
+    const dstHeight = chara_height * 0.3;
+    ctx.drawImage(
+      chara,
+      0,
+      0,
+      chara_width,
+      chara_height,
+      0,
+      0,
+      dstWidth,
+      dstHeight
+    );
+    ctx.lineJoin = "miter";
+    ctx.miterLimit = "1";
+    drawTextBase(ctx, document.getElementById("name").value, 180, 40, 40);
+    drawTextBase(ctx, document.getElementById("age").value, 750, 50, 30);
+    drawTextBase(ctx, document.getElementById("work").value, 400, 80, 20);
+    drawTextBase(ctx, document.getElementById("live").value, 400, 110, 20);
+    drawTextBase(
+      ctx,
+      document.getElementById("qualification1").value,
+      400,
+      140,
+      20
+    );
+    drawTextBase(
+      ctx,
+      document.getElementById("qualification2").value,
+      400,
+      170,
+      20
+    );
+    drawTextBase(
+      ctx,
+      document.getElementById("qualification3").value,
+      400,
+      200,
+      20
+    );
+
+    drawTextArea(ctx, "parsonality", 280, 260);
+
+    Array.prototype.forEach.call(
+      document.getElementById("lang-info").children,
+      (element, index) => {
+        drawTextBase(
+          ctx,
+          element.lastElementChild.value,
+          330,
+          380 + index * 29 + index / 5,
+          20
+        );
+      }
+    );
+    Array.prototype.forEach.call(
+      document.getElementById("frame-info").children,
+      (element, index) => {
+        drawTextBase(
+          ctx,
+          element.lastElementChild.value,
+          800,
+          380 + index * 29 + index / 5,
+          20
+        );
+      }
+    );
+    Array.prototype.forEach.call(
+      document.getElementById("infra-info").children,
+      (element, index) => {
+        drawTextBase(
+          ctx,
+          element.lastElementChild.value,
+          800,
+          760 + index * 29 + index / 5,
+          20
+        );
+      }
+    );
+    
+    drawTextArea(ctx, "past", 20, 1070);
+    drawTextBase(ctx, document.getElementById("hobby").value, 650, 1070, 20);
+    drawTextBase(ctx, document.getElementById("sp_skill").value, 650, 1170, 20);
+
+    const chartElement = drawChart();
+    ctx.drawImage(image_canvas, 25, 70);
+    ctx.drawImage(chartElement, 610, 50);
+    chartElement.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style = "display: block;";
+  }
+
+  function drawTextArea(ctx, id, x, base_y) {
+    var text = document
+      .getElementById(id)
+      .value.replace(/\r\n|\r/g, "\n")
+      .split("\n");
+    for (var i = 0; i < text.length; i++) {
+      if (text[i] == "") {
+        continue;
+      }
+
+      drawTextBase(ctx, text[i], x, base_y + i * 30, 20);
+    }
+  }
+
+  function drawTextBase(ctx, text, x, y, size) {
+    ctx.font = `bold ${size}px serif`;
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#FFF";
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = "#000";
+    ctx.fillText(text, x, y);
+  }
+
+  function download() {
+    draw();
+    let canvas = document.getElementById("canvas");
+
+    let link = document.createElement("a");
+    link.href = canvas.toDataURL();
+    link.download = `${document.getElementById("name").value}_skill_sheet.png`;
+    link.click();
+  }
+
+  function drawChart() {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    const labels = [
+      "フロント",
+      "バック",
+      "インフラ",
+      "マネジメント",
+      "DB",
+      "セキュリティ",
+    ];
+    const data = [
+      document.getElementById("front").value,
+      document.getElementById("back").value,
+      document.getElementById("infra").value,
+      document.getElementById("db").value,
+      document.getElementById("security").value,
+      document.getElementById("management").value,
+    ];
+    if (
+      document.getElementById("free_skill_name").value &&
+      document.getElementById("free_skill_value").value
+    ) {
+      labels.push(document.getElementById("free_skill_name").value);
+      data.push(document.getElementById("free_skill_value").value);
+    }
+    var myChart = new Chart(ctx, {
+      type: "radar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "",
+            data: data,
+            backgroundColor: "RGBA(225,95,150, 0.5)",
+            borderColor: "RGBA(225,95,150, 1)",
+            borderWidth: 1,
+            pointBackgroundColor: "RGB(46,106,177)",
+          },
+        ],
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        animation: false,
+        legend: {
+          display: false,
+        },
+        scale: {
+          ticks: {
+            suggestedMin: 0,
+            suggestedMax: 5,
+            stepSize: 1,
+            callback: function (value, index, values) {
+              return value;
+            },
+          },
+        },
+      },
+    });
+    return document.getElementById("myChart");
+  }
+</script>
