@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+
+    <style type="text/css"></style>
+
+    <script src="https://unpkg.com/alasql@0.4.11/dist/alasql.js"></script>
+
+    <title>アニメ視聴</title>
+  </head>
+  <body>
+    <h1>アニメ視聴状況メモ</h1>
+    <form>
+      <h2>新規追加</h2>
+      <p><label for="title">タイトル</label><input type="text" id="title" /></p>
+      <p><label for="link">リンク</label><input type="text" id="link" /></p>
+      <p>
+        <label for="update">更新曜日</label
+        ><select class="" name="update" id="update">
+          <option value="0">日曜日</option>
+          <option value="1">月曜日</option>
+          <option value="2">火曜日</option>
+          <option value="3">水曜日</option>
+          <option value="4">木曜日</option>
+          <option value="5">金曜日</option>
+          <option value="6">土曜日</option>
+        </select>
+      </p>
+      <button type="button" onclick="addTable()">追加</button>
+    </form>
+
+    <form>
+      <h2>検索</h2>
+      <!-- <p>
+        <label for="search_updated"
+          >更新ありのみ<input
+            id="search_updated"
+            type="checkbox"
+            checked="checked"
+        /></label>
+      </p> -->
+      <p>
+        <label for="search_skip"
+          >もう見ないを含む<input id="search_skip" type="checkbox"
+        /></label>
+      </p>
+      <p>
+        <label for="search_disabled"
+          >見終えたを含む<input id="search_disabled" type="checkbox"
+        /></label>
+      </p>
+      <button type="button" onclick="search()">検索</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>リンク</th>
+          <th>更新曜日</th>
+          <th>更新あり</th>
+          <th>最後に見た</th>
+          <th>もう見ない</th>
+          <th>見終えた</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </body>
+
+  <script type="text/javascript">
+    const today = new Date();
+    const URL_REGEX = /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/g;
+    const opened_week_num = today.getDay();
+    function refreshTable(query = "SELECT * FROM anime.title") {
+      const result = alasql(query);
+      dataToTable(result);
+    }
+    function dataToTable(data) {
+      const tbody = document.getElementById("tbody");
+      tbody.textContent = null;
+      data.forEach((item, i) => {
+        const tr = document.createElement("tr");
+
+        const title = document.createElement("td");
+        title.textContent = item.name;
+        tr.appendChild(title);
+
+        const link = document.createElement("td");
+        const linkHref = item.link;
+        if(checkUrl(linkHref)){
+          const aTag = document.createElement("a");
+          aTag.setAttribute('href',linkHref);
+          aTag.setAttribute('target','_blank');
+          aTag.setAttribute('rel','noopener nofollow');
+          aTag.textContent = 'リンク';
+          link.appendChild(aTag);
+        }else{
+          link.textContent = 'リンクなし';
+        }
+        tr.appendChild(link);
+
+        const week = document.createElement("td");
+        week.textContent = num_to_week(item.week_num);
+        tr.appendChild(week);
+
+        const updated = document.createElement("td");
+        const updatedWeek = item.updated;
+        const lastCheckDate = item.checked;
+        let checked = false;
+        if (!lastCheckDate) {
+          checked = true;
+        } else {
+          const lastOnAir =
+            opened_week_num - updatedWeek >= 0
+              ? opened_week_num - updatedWeek
+              : 7 + opened_week_num - updatedWeek;
+          let date = new Date();
+          date.setDate(date.getDate() - lastOnAir);
+          checked = lastCheckDate >= date;
+        }
+        updated.textContent = checked;
+        tr.appendChild(updated);
+
+        const lastCheck = document.createElement("td");
+        if (lastCheckDate) {
+          const lastCheckDateTime = new Date(lastCheckDate);
+          lastCheck.textContent = `${lastCheckDateTime.getFullYear()}年${
+            lastCheckDateTime.getMonth() + 1
+          }月${lastCheckDateTime.getDate()}日`;
+        } else {
+          lastCheck.textContent = "未視聴";
+        }
+
+        const lastViewButton = document.createElement("button");
+        lastViewButton.onclick = function () {
+          alasql(
+            `UPDATE anime.title SET checked = now() WHERE name = "${item.name}"`
+          );
+          search();
+        };
+        lastViewButton.textContent = "最新まで見た！";
+        lastCheck.appendChild(lastViewButton);
+        tr.appendChild(lastCheck);
+
+        const skip = document.createElement("td");
+        const skipCheck = document.createElement("input");
+        skipCheck.setAttribute("type", "checkbox");
+        if (item.skip) {
+          skipCheck.setAttribute("checked", "checked");
+        }
+        skipCheck.onchange = function () {
+          const skipStatus = !this.getAttribute("checked");
+          alasql(
+            `UPDATE anime.title SET skip = ${skipStatus} WHERE name = "${item.name}"`
+          );
+          search();
+        };
+        skip.appendChild(skipCheck);
+        tr.appendChild(skip);
+
+        const disabled = document.createElement("td");
+        const disabledCheck = document.createElement("input");
+        disabledCheck.setAttribute("type", "checkbox");
+        if (item.disabled) {
+          disabledCheck.setAttribute("checked", "checked");
+        }
+        disabledCheck.onchange = function () {
+          const disabledStatus = !this.getAttribute("checked");
+          alasql(
+            `UPDATE anime.title SET disabled = ${disabledStatus} WHERE name = "${item.name}"`
+          );
+          search();
+        };
+        disabled.appendChild(disabledCheck);
+        tr.appendChild(disabled);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function num_to_week(num) {
+      switch (num) {
+        case 0:
+          return "日曜日";
+        case 1:
+          return "月曜日";
+        case 2:
+          return "火曜日";
+        case 3:
+          return "水曜日";
+        case 4:
+          return "木曜日";
+        case 5:
+          return "金曜日";
+        case 6:
+          return "土曜日";
+        default:
+          return "指定なし";
+      }
+    }
+
+    function addTable() {
+      const title = document.getElementById("title").value;
+      if (!title) {
+        return;
+      }
+      if (
+        alasql(`SELECT * FROM anime.title WHERE title = "${title}"`).length !==
+        0
+      ) {
+        return;
+      }
+      const link = document.getElementById("link").value || null;
+      if(!!link && !checkUrl(link)){
+        console.log(link);
+        return;
+      }
+      const sql = `INSERT INTO anime.title VALUES ("${title}", "${link}", ${Number(
+        document.getElementById("update").value
+      )}, null, false, false)`;
+      document.getElementById("title").value = null;
+      document.getElementById("link").value = null;
+      document.getElementById("update").value = "0";
+      alasql(sql);
+      search();
+    }
+    function search() {
+      // const updatedOnly = !!document
+      //   .getElementById("search_updated")
+      //   .getAttribute("checked");
+      const notSkipOnly = !document.getElementById("search_skip").checked;
+      const notDisabledOnly = !document.getElementById("search_disabled")
+        .checked;
+      refreshTable(createQuery(false, notSkipOnly, notDisabledOnly));
+    }
+    function createQuery(
+      updatedOnly = true,
+      notSkipOnly = false,
+      notDisabledOnly = false
+    ) {
+      let query = "SELECT * FROM anime.title";
+      let useWhere = false;
+      // if (updatedOnly) {
+      //   query = `${query} WHERE (checked is null or checked >= ${date})`;
+      //   useWhere = true;
+      // }
+      if (notSkipOnly) {
+        if (useWhere) {
+          query = `${query} AND `;
+        } else {
+          query = `${query} WHERE `;
+          useWhere = true;
+        }
+        query = `${query} skip = ${false}`;
+      }
+      if (notDisabledOnly) {
+        if (useWhere) {
+          query = `${query} AND `;
+        } else {
+          query = `${query} WHERE `;
+          useWhere = true;
+        }
+        query = `${query} disabled = ${false}`;
+      }
+      return query;
+    }
+
+    function checkUrl(url){
+      return URL_REGEX.test(url);
+    }
+
+    // DB初期化
+    alasql("CREATE localStorage DATABASE IF NOT EXISTS anime");
+    alasql("ATTACH localStorage DATABASE anime");
+    alasql(
+      "CREATE TABLE IF NOT EXISTS anime.title (name string, link string, week_num int, checked date, skip boolean, disabled boolean)"
+    );
+    search();
+  </script>
+</html>
