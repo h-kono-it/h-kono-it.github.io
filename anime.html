@@ -203,17 +203,20 @@
     function addTable() {
       const title = document.getElementById("title").value;
       if (!title) {
+        alert("タイトルを入力してください");
         return;
       }
       if (
         alasql(`SELECT * FROM anime.title WHERE title = "${title}"`).length !==
         0
       ) {
+        alert("タイトルが重複しています");
         return;
       }
       const link = document.getElementById("link").value || null;
       if(!!link && !checkUrl(link)){
         console.log(link);
+        alert("リンクが正しいURLではありません");
         return;
       }
       const sql = `INSERT INTO anime.title VALUES ("${title}", "${link}", ${Number(
