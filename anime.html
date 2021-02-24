@@ -70,13 +70,11 @@
 
   <script type="text/javascript">
     const today = new Date();
-    const URL_REGEX = /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/g;
+    const URL_REGEX = /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/;
     const opened_week_num = today.getDay();
 
     function checkUrl(url){
-      console.log(url);
       const checked = URL_REGEX.test(url);
-      console.log(checked);
       return checked;
     }
 
@@ -98,7 +96,6 @@
         const link = document.createElement("td");
         const linkHref = item.link;
         if(checkUrl(linkHref)){
-          console.log(linkHref);
           const aTag = document.createElement("a");
           aTag.setAttribute('href',linkHref);
           aTag.setAttribute('target','_blank');
