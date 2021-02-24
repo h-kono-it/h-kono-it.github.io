@@ -97,6 +97,7 @@
         const link = document.createElement("td");
         const linkHref = item.link;
         if(checkUrl(linkHref)){
+          console.log(linkHref);
           const aTag = document.createElement("a");
           aTag.setAttribute('href',linkHref);
           aTag.setAttribute('target','_blank');
