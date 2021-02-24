@@ -74,6 +74,8 @@
     const opened_week_num = today.getDay();
 
     function checkUrl(url){
+      console.log(url);
+      console.log(URL_REGEX.test(url));
       return URL_REGEX.test(url);
     }
 
