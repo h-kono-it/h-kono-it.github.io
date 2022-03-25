@@ -1,308 +1,339 @@
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-  integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-  crossorigin="anonymous"
-></script>
-<label for="label1">基本情報</label>
-<input
-  type="checkbox"
-  id="label1"
-  onchange="toggleAcc(this)"
-  data-target="base-info"
-/>
-<div id="base-info" style="display: none">
-  <p>
-    <label for="name">名前：</label
-    ><input type="text" id="name" value="ひろ" />
-  </p>
-  <p>
-    <label for="age">年齢：</label><input type="text" id="age" value="ヒミツ" />
-  </p>
-  <p>
-    <label for="work">職業：</label
-    ><input type="text" id="work" value="プログラマ" />
-  </p>
-  <p>
-    <label for="live">住処：</label
-    ><input type="text" id="live" value="千葉" />
-  </p>
-  <p>
-    <label for="qualification1">スキル1：</label
-    ><input type="text" id="qualification1" value="DBスペシャリスト" />
-  </p>
-  <p>
-    <label for="qualification2">スキル2：</label
-    ><input type="text" id="qualification2" value="応用情報" />
-  </p>
-  <p>
-    <label for="qualification2">スキル3：</label
-    ><input type="text" id="qualification3" value="自動車免許" />
-  </p>
-  <p>
-    <label for="parsonality">性格</label
-    ><textarea id="parsonality" rows="2" cols="32" style="resize: none">
-コミュ障
-負けず嫌い</textarea
-    >
-  </p>
-  <p><label for="image">画像</label
-    ><input type="file" id="image"></p>
-</div>
-<label for="label2">レーダーチャート</label>
-<input
-  type="checkbox"
-  id="label2"
-  onchange="toggleAcc(this)"
-  data-target="radar-info"
-/>
-<div id="radar-info" style="display: none">
-  <p>
-    <label for="front">フロント：</label
-    ><input type="number" id="front" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="back">バック：</label
-    ><input type="number" id="back" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="infra">インフラ：</label
-    ><input type="number" id="infra" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="db">DB：</label
-    ><input type="number" id="db" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="security">セキュリティ：</label
-    ><input type="number" id="security" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="management">マネジメント：</label
-    ><input type="number" id="management" value="1" max="5" min="1" />
-  </p>
-  <p>
-    <label for="free_skill_name">フリー：</label
-    ><input type="text" id="free_skill_name" />：<input
-      type="number"
-      id="free_skill_value"
-      max="5"
-      min="1"
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
     />
-  </p>
-</div>
-<label for="label3">言語</label>
-<input
-  type="checkbox"
-  id="label3"
-  onchange="toggleAcc(this)"
-  data-target="lang-info"
-/>
-<div id="lang-info" style="display: none">
-  <p>
-    <label for="">C：</label
-    ><input type="number" id="lang1" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">C++：</label
-    ><input type="number" id="lang2" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">C#：</label
-    ><input type="number" id="lang3" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">PHP：</label
-    ><input type="number" id="lang4" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Java：</label
-    ><input type="number" id="lang5" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Kotlin：</label
-    ><input type="number" id="lang6" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Ruby：</label
-    ><input type="number" id="lang7" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Python：</label
-    ><input type="number" id="lang8" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Swift：</label
-    ><input type="number" id="lang9" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Haskell：</label
-    ><input type="number" id="lang10" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Scala：</label
-    ><input type="number" id="lang11" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Erlang：</label
-    ><input type="number" id="lang12" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Go：</label
-    ><input type="number" id="lang13" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">JavaScript：</label
-    ><input type="number" id="lang14" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">HTML5+CSS3：</label
-    ><input type="number" id="lang15" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Sass：</label
-    ><input type="number" id="lang16" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">COBOL：</label
-    ><input type="number" id="lang17" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Rust：</label
-    ><input type="number" id="lang18" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Clojure：</label
-    ><input type="number" id="lang19" value="0" max="100" min="0" />
-  </p>
-</div>
-<label for="label4">フレームワーク</label>
-<input
-  type="checkbox"
-  id="label4"
-  onchange="toggleAcc(this)"
-  data-target="frame-info"
-/>
-<div id="frame-info" style="display: none">
-  <p>
-    <label for="">Spring：</label
-    ><input type="number" id="frame1" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Jakarta EE：</label
-    ><input type="number" id="frame2" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">CakePHP：</label
-    ><input type="number" id="frame3" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Symfony：</label
-    ><input type="number" id="frame4" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Laravel：</label
-    ><input type="number" id="frame5" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Ruby on Rails：</label
-    ><input type="number" id="frame6" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Django：</label
-    ><input type="number" id="frame7" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Play Framework：</label
-    ><input type="number" id="frame8" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">.NET Framework：</label
-    ><input type="number" id="frame9" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">React：</label
-    ><input type="number" id="frame10" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Vue.js：</label
-    ><input type="number" id="frame11" value="0" max="100" min="0" />
-  </p>
-</div>
-<label for="label5">インフラ</label>
-<input
-  type="checkbox"
-  id="label5"
-  onchange="toggleAcc(this)"
-  data-target="infra-info"
-/>
-<div id="infra-info" style="display: none">
-  <p>
-    <label for="">AWS：</label
-    ><input type="number" id="infra1" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">GCP：</label
-    ><input type="number" id="infra2" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">UNIX：</label
-    ><input type="number" id="infra3" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Windows Server：</label
-    ><input type="number" id="infra4" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Apache：</label
-    ><input type="number" id="infra5" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">Tomcat：</label
-    ><input type="number" id="infra6" value="0" max="100" min="0" />
-  </p>
-  <p>
-    <label for="">nginx：</label
-    ><input type="number" id="infra7" value="0" max="100" min="0" />
-  </p>
-</div>
 
-<label for="label6">その他</label>
-<input
-  type="checkbox"
-  id="label6"
-  onchange="toggleAcc(this)"
-  data-target="other-info"
-/>
-<div id="other-info" style="display: none">
-  <p>
-    <label for="past">略歴</label
-    ><textarea id="past" rows="4" cols="56" style="resize: none">
-SIerで5年間、金融系システムなどの基幹システムに携わる。
-主にJavaを使い、Webサービスを実装。
-自社サービスに関わりたいと思い転職して今に至る。</textarea
-    >
-  </p>
-  <p>
-    <label for="hobby">趣味</label
-    ><input type="text" id="hobby" value="TRPG, 一人カラオケ" />
-  </p>
-  <p>
-    <label for="sp_skill">特技</label
-    ><input type="text" id="sp_skill" value="縄跳び" />
-  </p></div>
+    <title>アニメ視聴</title>
+  </head>
+  <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+      integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+      crossorigin="anonymous"
+    ></script>
+    <label for="label1">基本情報</label>
+    <input
+      type="checkbox"
+      id="label1"
+      onchange="toggleAcc(this)"
+      data-target="base-info"
+    />
+    <div id="base-info" style="display: none">
+      <p>
+        <label for="name">名前：</label
+        ><input type="text" id="name" value="ひろ" />
+      </p>
+      <p>
+        <label for="age">年齢：</label
+        ><input type="text" id="age" value="ヒミツ" />
+      </p>
+      <p>
+        <label for="work">職業：</label
+        ><input type="text" id="work" value="プログラマ" />
+      </p>
+      <p>
+        <label for="live">住処：</label
+        ><input type="text" id="live" value="千葉" />
+      </p>
+      <p>
+        <label for="qualification1">スキル1：</label
+        ><input type="text" id="qualification1" value="DBスペシャリスト" />
+      </p>
+      <p>
+        <label for="qualification2">スキル2：</label
+        ><input type="text" id="qualification2" value="応用情報" />
+      </p>
+      <p>
+        <label for="qualification2">スキル3：</label
+        ><input type="text" id="qualification3" value="自動車免許" />
+      </p>
+      <p>
+        <label for="parsonality">性格</label
+        ><textarea id="parsonality" rows="2" cols="32" style="resize: none">
+    コミュ障
+    負けず嫌い</textarea
+        >
+      </p>
+      <p><label for="image">画像</label><input type="file" id="image" /></p>
+    </div>
+    <label for="label2">レーダーチャート</label>
+    <input
+      type="checkbox"
+      id="label2"
+      onchange="toggleAcc(this)"
+      data-target="radar-info"
+    />
+    <div id="radar-info" style="display: none">
+      <p>
+        <label for="front">フロント：</label
+        ><input type="number" id="front" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="back">バック：</label
+        ><input type="number" id="back" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="infra">インフラ：</label
+        ><input type="number" id="infra" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="db">DB：</label
+        ><input type="number" id="db" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="security">セキュリティ：</label
+        ><input type="number" id="security" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="management">マネジメント：</label
+        ><input type="number" id="management" value="1" max="5" min="1" />
+      </p>
+      <p>
+        <label for="free_skill_name">フリー：</label
+        ><input type="text" id="free_skill_name" />：<input
+          type="number"
+          id="free_skill_value"
+          max="5"
+          min="1"
+        />
+      </p>
+    </div>
+    <label for="label3">言語</label>
+    <input
+      type="checkbox"
+      id="label3"
+      onchange="toggleAcc(this)"
+      data-target="lang-info"
+    />
+    <div id="lang-info" style="display: none">
+      <p>
+        <label for="">C：</label
+        ><input type="number" id="lang1" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">C++：</label
+        ><input type="number" id="lang2" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">C#：</label
+        ><input type="number" id="lang3" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">PHP：</label
+        ><input type="number" id="lang4" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Java：</label
+        ><input type="number" id="lang5" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Kotlin：</label
+        ><input type="number" id="lang6" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Ruby：</label
+        ><input type="number" id="lang7" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Python：</label
+        ><input type="number" id="lang8" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Swift：</label
+        ><input type="number" id="lang9" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Haskell：</label
+        ><input type="number" id="lang10" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Scala：</label
+        ><input type="number" id="lang11" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Erlang：</label
+        ><input type="number" id="lang12" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Go：</label
+        ><input type="number" id="lang13" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">JavaScript：</label
+        ><input type="number" id="lang14" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">HTML5+CSS3：</label
+        ><input type="number" id="lang15" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Sass：</label
+        ><input type="number" id="lang16" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">COBOL：</label
+        ><input type="number" id="lang17" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Rust：</label
+        ><input type="number" id="lang18" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Clojure：</label
+        ><input type="number" id="lang19" value="0" max="100" min="0" />
+      </p>
+    </div>
+    <label for="label4">フレームワーク</label>
+    <input
+      type="checkbox"
+      id="label4"
+      onchange="toggleAcc(this)"
+      data-target="frame-info"
+    />
+    <div id="frame-info" style="display: none">
+      <p>
+        <label for="">Spring：</label
+        ><input type="number" id="frame1" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Jakarta EE：</label
+        ><input type="number" id="frame2" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">CakePHP：</label
+        ><input type="number" id="frame3" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Symfony：</label
+        ><input type="number" id="frame4" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Laravel：</label
+        ><input type="number" id="frame5" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Ruby on Rails：</label
+        ><input type="number" id="frame6" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Django：</label
+        ><input type="number" id="frame7" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Play Framework：</label
+        ><input type="number" id="frame8" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">.NET Framework：</label
+        ><input type="number" id="frame9" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">React：</label
+        ><input type="number" id="frame10" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Vue.js：</label
+        ><input type="number" id="frame11" value="0" max="100" min="0" />
+      </p>
+    </div>
+    <label for="label5">インフラ</label>
+    <input
+      type="checkbox"
+      id="label5"
+      onchange="toggleAcc(this)"
+      data-target="infra-info"
+    />
+    <div id="infra-info" style="display: none">
+      <p>
+        <label for="">AWS：</label
+        ><input type="number" id="infra1" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">GCP：</label
+        ><input type="number" id="infra2" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">UNIX：</label
+        ><input type="number" id="infra3" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Windows Server：</label
+        ><input type="number" id="infra4" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Apache：</label
+        ><input type="number" id="infra5" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">Tomcat：</label
+        ><input type="number" id="infra6" value="0" max="100" min="0" />
+      </p>
+      <p>
+        <label for="">nginx：</label
+        ><input type="number" id="infra7" value="0" max="100" min="0" />
+      </p>
+    </div>
 
-<button id="draw" onclick="draw()" style="display: none">描画</button>
-<button id="download" onclick="download()" style="display: none">
-  download
-</button>
-<canvas id="myChart" width="250" height="250" style="display: none"></canvas>
+    <label for="label6">その他</label>
+    <input
+      type="checkbox"
+      id="label6"
+      onchange="toggleAcc(this)"
+      data-target="other-info"
+    />
+    <div id="other-info" style="display: none">
+      <p>
+        <label for="past">略歴</label
+        ><textarea id="past" rows="4" cols="56" style="resize: none">
+    SIerで5年間、金融系システムなどの基幹システムに携わる。
+    主にJavaを使い、Webサービスを実装。
+    自社サービスに関わりたいと思い転職して今に至る。</textarea
+        >
+      </p>
+      <p>
+        <label for="hobby">趣味</label
+        ><input type="text" id="hobby" value="TRPG, 一人カラオケ" />
+      </p>
+      <p>
+        <label for="sp_skill">特技</label
+        ><input type="text" id="sp_skill" value="縄跳び" />
+      </p>
+    </div>
 
-<canvas id="canvas" width="870" height="1200" style="display: none"></canvas>
-<canvas id="image-canvas" width="200" height="200" style="display: none"></canvas>
+    <button id="draw" onclick="draw()" style="display: none">描画</button>
+    <button id="download" onclick="download()" style="display: none">
+      download
+    </button>
+    <canvas
+      id="myChart"
+      width="250"
+      height="250"
+      style="display: none"
+    ></canvas>
+
+    <canvas
+      id="canvas"
+      width="870"
+      height="1200"
+      style="display: none"
+    ></canvas>
+    <canvas
+      id="image-canvas"
+      width="200"
+      height="200"
+      style="display: none"
+    ></canvas>
+  </body>
+</html>
 
 <script>
-  var file = document.getElementById('image');
-  var image_canvas = document.getElementById('image-canvas');
+  var file = document.getElementById("image");
+  var image_canvas = document.getElementById("image-canvas");
   var canvasWidth = 200;
   var canvasHeight = 200;
   var uploadImgSrc;
@@ -310,8 +341,7 @@ SIerで5年間、金融系システムなどの基幹システムに携わる。
   // Canvasの準備
   image_canvas.width = canvasWidth;
   image_canvas.height = canvasHeight;
-  var image_ctx = image_canvas.getContext('2d');
-
+  var image_ctx = image_canvas.getContext("2d");
 
   const chara = new Image();
   chara.src = "image0.png"; // 画像のURLを指定
@@ -329,25 +359,25 @@ SIerで5年間、金融系システムなどの基幹システムに携わる。
     var fileData = e.target.files[0];
 
     // 画像ファイル以外は処理を止める
-    if(!fileData.type.match('image.*')) {
-      alert('画像を選択してください');
+    if (!fileData.type.match("image.*")) {
+      alert("画像を選択してください");
       return;
     }
 
     // FileReaderオブジェクトを使ってファイル読み込み
     var reader = new FileReader();
     // ファイル読み込みに成功したときの処理
-    reader.onload = function() {
+    reader.onload = function () {
       // Canvas上に表示する
       uploadImgSrc = reader.result;
       canvasDraw();
-    }
+    };
     // ファイル読み込みを実行
     reader.readAsDataURL(fileData);
   }
 
   // ファイルが指定された時にloadLocalImage()を実行
-  file.addEventListener('change', loadLocalImage, false);
+  file.addEventListener("change", loadLocalImage, false);
 
   // Canvas上に画像を表示する
   function canvasDraw() {
@@ -357,9 +387,15 @@ SIerで5年間、金融系システムなどの基幹システムに携わる。
     // Canvas上に画像を表示
     var img = new Image();
     img.src = uploadImgSrc;
-    img.onload = function() {
-      image_ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
-    }
+    img.onload = function () {
+      image_ctx.drawImage(
+        img,
+        0,
+        0,
+        canvasWidth,
+        this.height * (canvasWidth / this.width)
+      );
+    };
   }
 
   function toggleAcc(ele) {
@@ -479,7 +515,7 @@ SIerで5年間、金融系システムなどの基幹システムに携わる。
         );
       }
     );
-    
+
     drawTextArea(ctx, "past", 20, 1070);
     drawTextBase(ctx, document.getElementById("hobby").value, 650, 1070, 20);
     drawTextBase(ctx, document.getElementById("sp_skill").value, 650, 1170, 20);
